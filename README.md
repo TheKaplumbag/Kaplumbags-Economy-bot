@@ -1,2 +1,1 @@
-# Kaplumbags-Economy-bot
-Created via Acode
+# Kaplumbags-Economy-bot by "@thekaplumbag."
