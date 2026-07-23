@@ -21,7 +21,7 @@ con.close()
 load_dotenv()
 TOKEN : str = os.getenv(key="BOT_TOKEN")
 DEV_GUILD : str = os.getenv(key="DEV_GUILD")
-
+PROXY = os.getenv("PROXY")
 class Bot(commands.Bot):
   def __init__(self):
     Intents = discord.Intents.all()
@@ -29,7 +29,7 @@ class Bot(commands.Bot):
     
     super().__init__(command_prefix=commands.when_mentioned_or("!"), intents=Intents,
     help_command=None,
-    activity=discord.Game(name="Kaplumbags economy"))
+    activity=discord.Game(name="Kaplumbags economy"), proxy=PROXY)
 
   async def setup_hook(self):
     await self.load_extension("Cogs.Economy")
