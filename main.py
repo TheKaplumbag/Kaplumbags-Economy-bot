@@ -34,6 +34,7 @@ class Bot(commands.Bot):
   async def setup_hook(self):
     await self.load_extension("Cogs.Economy")
     await self.load_extension("Cogs.Games")
+    await self.load_extension("Cogs.Owner")
 
     await self.tree.sync()
     print("Synced global commands")
