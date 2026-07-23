@@ -33,13 +33,15 @@ class Bot(commands.Bot):
 
   async def setup_hook(self):
     await self.load_extension("Cogs.Economy")
-   # await self.load_extension("Cogs.Games")
+    await self.load_extension("Cogs.Games")
 
     await self.tree.sync()
     print("Synced global commands")
     
     if DEV_GUILD and DEV_GUILD.isdigit():
       guild = discord.Object(id=int(DEV_GUILD))
+
+      self.tree.copy_global_to(guild=guild)
       await self.tree.sync(guild=guild)
       
       print(f"Synced commands to DEV_GUILD={DEV_GUILD}")

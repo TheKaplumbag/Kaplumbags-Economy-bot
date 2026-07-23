@@ -13,13 +13,13 @@ def getCoins(userId: int) -> int:
       return 100
     return data[0]
 
-def removeMoney(userId: int, remove: int) -> bool | str:
+def removeMoney(userId: int, remove: int) -> tuple[bool, str]:
   with sql.connect("economy.db") as con:
     cursor = con.cursor()
 
     current = getCoins(userId)
     if current is not None:
-      cursor.execute("UPDATE ECONOMY SET Coins = current - ? WHERE userID = ?", (remove,userId))
+      cursor.execute("UPDATE ECONOMY SET Coins = Coins - ? WHERE userID = ?", (remove,userId))
       con.commit()
       return True, "Success!"
     else:
@@ -27,13 +27,13 @@ def removeMoney(userId: int, remove: int) -> bool | str:
 
   
 
-def addMoney(userId: int, add: int) -> bool | str:
+def addMoney(userId: int, add: int) -> tuple[bool, str]:
   with sql.connect("economy.db") as con:
 
     cursor = con.cursor()
-    current = getCoins(userid)
+    current = getCoins(userId)
     if current is not None:
-      cursor.execute("UPDATE ECONOMY SET Coins = current + ? WHERE userID = ?", (add, userId))
+      cursor.execute("UPDATE ECONOMY SET Coins = Coins + ? WHERE userID = ?", (add, userId))
       con.commit()
       return True, "Success!"
     else:
