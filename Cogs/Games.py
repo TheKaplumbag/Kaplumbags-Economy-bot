@@ -91,7 +91,7 @@ class GameCommands(commands.Cog):
       addMoney(id,reward)
       await interaction.followup.send(f"{result}\n\nYou've hit the small prize! it's: ** {reward}¢**!")
     else:
-      await interaction.followup.send(f"You've lost {bet}¢!")
+      await interaction.followup.send(f"{result}\n\nYou've lost {bet}¢!")
 
   
 
